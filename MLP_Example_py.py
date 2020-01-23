@@ -10,7 +10,7 @@ A MLP network for MNIST digits classification
 Modfied from the original code from:  https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras
 '''
 
-#import numpy as np
+import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.utils import to_categorical, plot_model
