@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 
 '''
 A MLP network for MNIST digits classification
@@ -10,7 +10,7 @@ A MLP network for MNIST digits classification
 Modfied from the original code from:  https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras
 '''
 
-import numpy as np
+#import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.utils import to_categorical, plot_model
@@ -34,7 +34,7 @@ image_size = x_train.shape[1]
 
 print("\n\nOriginal Training image shape = ", image_size)
 
-#In a sequential model could have done this with a keras.layers.Flatten(input_shape=(28,28)) 
+#In a sequential model could have done this with a keras.layers.Flatten(input_shape=(28,28))
 
 input_size = image_size * image_size
 print("\n\nTraining Input Size = ", input_size)
@@ -65,12 +65,12 @@ dropout = 0.45 # Dropout is a form of regularization, that make neural networks 
 
 # model is a 3-layer MLP with ReLU and dropout after each layer
 model = Sequential()
-model.add(Dense(hidden_units, input_dim=input_size)) #The 1st MLP Layer. Only the first layer has input_dim specified as an argument. 
-model.add(Activation('relu')) 
-model.add(Dropout(dropout))  #First MLP Layer has 256 hidden units, post dropout, (1 - 0.45) * 256 = 140 hidden units participate in layer 2 from 1 
+model.add(Dense(hidden_units, input_dim=input_size)) #The 1st MLP Layer. Only the first layer has input_dim specified as an argument.
+model.add(Activation('relu'))
+model.add(Dropout(dropout))  #First MLP Layer has 256 hidden units, post dropout, (1 - 0.45) * 256 = 140 hidden units participate in layer 2 from 1
 model.add(Dense(hidden_units))
 model.add(Activation('relu'))
-model.add(Dropout(dropout)) #Second MLP Layer has 140 hidden units, post dropout, (1 - 0.45) * 140 = 91 hidden units participate in layer 3 from 2 
+model.add(Dropout(dropout)) #Second MLP Layer has 140 hidden units, post dropout, (1 - 0.45) * 140 = 91 hidden units participate in layer 3 from 2
 model.add(Dense(num_labels)) #Then we map to the output length for the number of labels, 10.
 # this is the output for one-hot vector
 model.add(Activation('softmax')) # softmax squashes the outputs to predicted probabilities of each class that sum to 1.
